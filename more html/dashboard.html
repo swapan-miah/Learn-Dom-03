@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneBank - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center h-screen">
+
+    <div class="w-full">
+
+        <h1 class="text-3xl block text-center font-bold text-indigo-700">OneBank</h1>
+        <hr class="mt-3">
+
+        <div class="grid grid-cols-3">
+
+
+            <div class="bg-red-500 p-3 m-5 rounded-md flex justify-between">
+                <h4 class="text-xl font-bold">Deposit</h4>
+                <h2 class="font-bold text-2xl">$<span id="depositCount">50</span></h2>
+            </div>
+
+            <div class="bg-lime-500 p-3 m-5 rounded-md flex justify-between">
+                <h4 class="text-xl font-bold">Withdrow</h4>
+                <h2 class="font-bold text-2xl">$<span id="withdrowCount">50</span></h2>
+            </div>
+
+            <div class="bg-pink-500 p-3 m-5 rounded-md flex justify-between">
+                <h4 class="text-xl font-bold">Balance</h4>
+                <h2 class="font-bold text-2xl">$<span id="balanceCount">50</span></h2>
+            </div>
+
+
+        </div>
+
+        <div class="grid grid-cols-2 p-3 bg-cyan-500 m-5 gap-5 rounded-md">
+
+            <div class="bg-red-500 p-3 rounded-md">
+                <input id="inputDeposit" class="block w-full p-3 rounded-md mb-5" type="number" placeholder="Enter Your Deposit Amount">
+                <button id="depositBtn" class="block w-full bg-indigo-700 rounded-md p-2 font-bold text-xl text-white">Deposit</button>
+            </div>
+
+            <div class="bg-lime-500 p-3 rounded-md">
+                <input id="inputWithdrow" class="block w-full p-3 rounded-md mb-5" type="number" placeholder="Enter Your Withdrow Amount">
+                <button id="withdrowBtn" class="block w-full bg-indigo-700 rounded-md p-2 font-bold text-xl text-white">Withdrow</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+
+
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
