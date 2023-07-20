@@ -8,7 +8,7 @@ document.getElementById('loginBtn').addEventListener('click', function(){
 
     if(inputEmailValue == 'info@admin.com' && inputPasswordValue == 'admin'){
 
-        window.location.href ='../html/dashboard.html';
+        window.location.href ='./more-html/dashboard.html';
     }else{
 
         alert("You Are Not Real Account Holder");
