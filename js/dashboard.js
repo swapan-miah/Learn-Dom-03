@@ -5,41 +5,69 @@ let inputDeposit = document.getElementById('inputDeposit');
 let depositBtn = document.getElementById('depositBtn');
 let inputWithdrow = document.getElementById('inputWithdrow');
 let withdrowBtn = document.getElementById('withdrowBtn');
+let outputError = document.getElementById('error');
+let outputErrors = document.getElementById('errors');
 
 depositBtn.addEventListener('click', function(){
 
-    let inputDepositValue = inputDeposit.value;
-    let inputDepositValueToNumber = parseFloat(inputDepositValue);
+    if (inputDeposit.value == '') {
+        inputDeposit.style.border = '2px solid red';
+        outputError.innerText = 'Input Your Amount number';
+        
+    }else{
+        let inputDepositValue = inputDeposit.value;
+        let inputDepositValueToNumber = parseFloat(inputDepositValue);
+    
+        let previousDeposit = depositCount.innerText;
+        let previousDepositToNumber = parseFloat(previousDeposit);
+        let previousBalance = balanceCount.innerText;
+        let previousBalanceToNumber = parseFloat(previousBalance);
+    
+        let totalDeposit = inputDepositValueToNumber + previousDepositToNumber;
+        let totalBalance = inputDepositValueToNumber + previousBalanceToNumber;
+        depositCount.innerText = totalDeposit;
+        balanceCount.innerText = totalBalance;
+    
+        inputDeposit.value = "";
+    }
 
-    let previousDeposit = depositCount.innerText;
-    let previousDepositToNumber = parseFloat(previousDeposit);
-    let previousBalance = balanceCount.innerText;
-    let previousBalanceToNumber = parseFloat(previousBalance);
-
-    let totalDeposit = inputDepositValueToNumber + previousDepositToNumber;
-    let totalBalance = inputDepositValueToNumber + previousBalanceToNumber;
-    depositCount.innerText = totalDeposit;
-    balanceCount.innerText = totalBalance;
-
-    inputDeposit.value= "";
 });
 
 
 
 withdrowBtn.addEventListener('click', function(){
 
-    let inputWithdrowValue = inputWithdrow.value;
-    let inputWithdrowValueToNumber = parseFloat(inputWithdrowValue);
+    if(inputWithdrow.value == '') {
 
-    let previousWithdrow = withdrowCount.innerText;
-    let previousWithdrowToNumber = parseFloat(previousWithdrow);
-    let previousBalance = balanceCount.innerText;
-    let previousBalanceToNumber = parseFloat(previousBalance);
+        inputWithdrow.style.border = '2px solid red';
+        outputErrors.innerText = 'Input Your Amount number';
+        
+    }else{
 
-    let totalWithdrow = inputWithdrowValueToNumber + previousWithdrowToNumber;
-    let totalBalance = previousBalanceToNumber - inputWithdrowValueToNumber;
-    withdrowCount.innerText = totalWithdrow;
-    balanceCount.innerText = totalBalance;
+    
+        let inputWithdrowValue = inputWithdrow.value;
+        let inputWithdrowValueToNumber = parseFloat(inputWithdrowValue);
 
-    inputDeposit.value= "";
-})
+        let previousWithdrow = withdrowCount.innerText;
+        let previousWithdrowToNumber = parseFloat(previousWithdrow);
+        let previousBalance = balanceCount.innerText;
+        let previousBalanceToNumber = parseFloat(previousBalance);
+
+        if (inputWithdrow.value > previousBalanceToNumber  ) {
+            inputWithdrow.style.border = '2px solid red';
+            outputErrors.innerText = 'Your Account Balance is low';
+            
+        }else{
+
+            let totalWithdrow = inputWithdrowValueToNumber + previousWithdrowToNumber;
+            let totalBalance = previousBalanceToNumber - inputWithdrowValueToNumber;
+            withdrowCount.innerText = totalWithdrow;
+            balanceCount.innerText = totalBalance;
+
+            inputDeposit.value= "";
+
+        }
+
+    }
+
+});

@@ -17,7 +17,8 @@ document.getElementById('loginBtn').addEventListener('click', function(){
         inputEmail.style.border = '2px solid red';
         inputPassword.style.border = '2px solid red';
         outputError.innerText = 'Email is required';
-        outputErrors.innerText = 'Password is required';
+        outputErrors.innerText = "Password is required";
+
 
     }else if(inputEmailValue == 'info@admin.com' && inputPasswordValue == ''){
 
@@ -31,8 +32,20 @@ document.getElementById('loginBtn').addEventListener('click', function(){
         outputError.innerText = 'Email is required';
 
 
+    }else if(!inputEmailValue === 'info@admin.com' && !inputPasswordValue === 'admin'){
+
+        inputEmail.style.border = '2px solid red';
+        outputError.innerText = 'Email is required';
+
+
     }else{
-        alert("You Are Not Real Account Holder");
+
+        inputEmail.style.border = '2px solid red';
+        inputPassword.style.border = '2px solid red';
+        outputError.innerText = 'Provide a valid Email address';
+        outputErrors.innerText = "Provide a valid Password";
+
     }
+    
 
 });
