@@ -2,6 +2,8 @@ document.getElementById('loginBtn').addEventListener('click', function(){
 
     let inputEmail = document.getElementById('inputEmail');
     let inputPassword = document.getElementById('inputPassword');
+    let outputError = document.getElementById('error');
+    let outputErrors = document.getElementById('errors');
 
     let inputEmailValue = inputEmail.value;
     let inputPasswordValue = inputPassword.value;
@@ -9,8 +11,27 @@ document.getElementById('loginBtn').addEventListener('click', function(){
     if(inputEmailValue == 'info@admin.com' && inputPasswordValue == 'admin'){
 
         window.location.href ='./more-html/dashboard.html';
-    }else{
 
+    }else if(inputEmailValue == '' && inputPasswordValue == ''){
+
+        inputEmail.style.border = '2px solid red';
+        inputPassword.style.border = '2px solid red';
+        outputError.innerText = 'Email is required';
+        outputErrors.innerText = 'Password is required';
+
+    }else if(inputEmailValue == 'info@admin.com' && inputPasswordValue == ''){
+
+        inputPassword.style.border = '2px solid red';
+        outputErrors.innerText = 'Password is required';
+
+
+    }else if(inputEmailValue == '' && inputPasswordValue == 'admin'){
+
+        inputEmail.style.border = '2px solid red';
+        outputError.innerText = 'Email is required';
+
+
+    }else{
         alert("You Are Not Real Account Holder");
     }
 
