@@ -64,7 +64,7 @@ withdrowBtn.addEventListener('click', function(){
             withdrowCount.innerText = totalWithdrow;
             balanceCount.innerText = totalBalance;
 
-            inputDeposit.value= "";
+            inputWithdrow.value= "";
 
         }
 
