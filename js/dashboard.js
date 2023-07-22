@@ -1,15 +1,43 @@
 let depositBtn = document.getElementById('depositBtn');
 let withdrowBtn = document.getElementById('withdrowBtn');
 
+depositBtn.addEventListener('click', function(){
+
+    let inputDepositBoxId = inputBoxes('depositInputBox','error');
+    let previousDepositValue = previousBalanceBoxes('previousDepositAmount');
+    let previousBalanceValue = previousBalanceBoxes('previousBalanceAmount');
+
+    calculatAmount('previousDepositAmount', inputDepositBoxId, previousDepositValue, previousBalanceValue, true);
+});
+
+withdrowBtn.addEventListener('click', function(){
+
+    let inputWithdrowBoxId = inputBoxes('withdrowInputBox', 'errors');
+    let previousWithdrowValue = previousBalanceBoxes('previousWithdrowAmount');
+    let previousBalanceValue = previousBalanceBoxes('previousBalanceAmount');
+
+    if(inputWithdrowBoxId > previousBalanceValue){
+        document.getElementById('withdrowInputBox').style.border = '2px solid red'
+        document.getElementById('errors').innerText = 'Your Account Balance is Low';
+    }else{
+
+        calculatAmount('previousWithdrowAmount', inputWithdrowBoxId, previousWithdrowValue, previousBalanceValue, false);
+    }
+
+
+});
+
+
+
 function inputBoxes(inputBoxId, errorId){
 
     let inputBox = document.getElementById(inputBoxId);
     let inputBoxValue = inputBox.value;
 
     if(inputBoxValue == ''){
-        
+
         inputBox.style.border = '2px solid red';
-        document.getElementById(errorId).innerText = 'Input Your Amount Number';
+        document.getElementById(errorId).innerText = 'Input a Number';
 
         return inputBoxValueToNumber;
     }else{
@@ -35,9 +63,6 @@ function previousBalanceBoxes(previousBalanceId) {
 
 
 
-
-
-
 function calculatAmount(inputCalculateId, previousAmountId, previousbalanceId, currentbalanceId, plusOrMainas) {
 
     let calculate = document.getElementById(inputCalculateId);
@@ -54,31 +79,7 @@ function calculatAmount(inputCalculateId, previousAmountId, previousbalanceId, c
         document.getElementById('previousBalanceAmount').innerText = totalBalance;
     }
 
-}
-
-
-
-
-
-
-
-depositBtn.addEventListener('click', function(){
-
-    let inputDepositBoxId = inputBoxes('depositInputBox','error');
-    let previousDepositValue = previousBalanceBoxes('previousDepositAmount');
-    let previousBalanceValue = previousBalanceBoxes('previousBalanceAmount');
-
-    calculatAmount('previousDepositAmount', inputDepositBoxId, previousDepositValue, previousBalanceValue, true);
-});
-
-withdrowBtn.addEventListener('click', function(){
-
-    let inputWithdrowBoxId = inputBoxes('withdrowInputBox', 'errors');
-    let previousWithdrowValue = previousBalanceBoxes('previousWithdrowAmount');
-    let previousBalanceValue = previousBalanceBoxes('previousBalanceAmount');
-
-    calculatAmount('previousWithdrowAmount', inputWithdrowBoxId, previousWithdrowValue, previousBalanceValue, false);
-});
+};
 
 
 
@@ -98,12 +99,12 @@ withdrowBtn.addEventListener('click', function(){
 
 
 /* 
-let depositCount = document.getElementById('depositCount');
-let withdrowCount = document.getElementById('withdrowCount');
-let balanceCount = document.getElementById('balanceCount');
-let inputDeposit = document.getElementById('inputDeposit');
+let depositCount = document.getElementById('previousDepositAmount');
+let withdrowCount = document.getElementById('previousWithdrowAmount');
+let balanceCount = document.getElementById('previousBalanceAmount');
+let inputDeposit = document.getElementById('depositInputBox');
 let depositBtn = document.getElementById('depositBtn');
-let inputWithdrow = document.getElementById('inputWithdrow');
+let inputWithdrow = document.getElementById('withdrowInputBox');
 let withdrowBtn = document.getElementById('withdrowBtn');
 let outputError = document.getElementById('error');
 let outputErrors = document.getElementById('errors');
