@@ -4,9 +4,10 @@ document.getElementById('loginBtn').addEventListener('click', function(){
     let inputPassword = document.getElementById('inputPassword');
     let outputError = document.getElementById('error');
     let outputErrors = document.getElementById('errors');
-
     let inputEmailValue = inputEmail.value;
     let inputPasswordValue = inputPassword.value;
+
+
 
     if(inputEmailValue == 'info@admin.com' && inputPasswordValue == 'admin'){
 
@@ -31,13 +32,6 @@ document.getElementById('loginBtn').addEventListener('click', function(){
         inputEmail.style.border = '2px solid red';
         outputError.innerText = 'Email is required';
 
-
-    }else if(!inputEmailValue === 'info@admin.com' && !inputPasswordValue === 'admin'){
-
-        inputEmail.style.border = '2px solid red';
-        outputError.innerText = 'Email is required';
-
-
     }else{
 
         inputEmail.style.border = '2px solid red';
@@ -46,6 +40,8 @@ document.getElementById('loginBtn').addEventListener('click', function(){
         outputErrors.innerText = "Provide a valid Password";
 
     }
+
+    
     
 
 });
